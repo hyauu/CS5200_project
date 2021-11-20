@@ -5,7 +5,7 @@ CREATE TABLE `db_project`.`employees` (
  `first_name` VARCHAR(45) NULL,
  `last_name` VARCHAR(45) NULL,
  `username` VARCHAR(45) NOT NULL,
- `password` VARCHAR(45) NOT NULL,
+ `password` VARCHAR(45) NULL,
  `email` VARCHAR(45) NULL,
  `dateOfBirth` DATETIME NULL,
  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
