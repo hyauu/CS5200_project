@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS `db_project`.`orders_to_menu_items`;
 CREATE TABLE `db_project`.`orders_to_menu_items` (
  `id` INT NOT NULL AUTO_INCREMENT,
- `name` VARCHAR(45) NULL,
  `order_id` INT NULL,
  `menu_item_id` INT NULL,
  `quantity` INT NULL,
