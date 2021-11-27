@@ -12,7 +12,7 @@ public class CustomerDao {
 
     @GetMapping("/findCustomers")
     public Iterable<Customer> findAllCustomers() {
-        return customerRepository.findAll();
+        return customerRepository.findAllCustomer();
     }
 
     public Customer findCustomerById(Integer customerId) {
