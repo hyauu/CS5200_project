@@ -15,7 +15,8 @@ public class CustomerDao {
         return customerRepository.findAllCustomer();
     }
 
-    public Customer findCustomerById(Integer customerId) {
+    @GetMapping("/findCustomer/{customerId}")
+    public Customer findCustomerById(@PathVariable("customerId") Integer customerId) {
         return customerRepository.findById(customerId).get();
     }
 

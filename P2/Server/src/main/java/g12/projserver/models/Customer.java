@@ -16,8 +16,8 @@ public class Customer {
     private String username;
     private String password;
     private String email;
-    private Date createdAt; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
-    private Date updatedAt;
+    private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
+    private Date updated;
     private Integer phone;
 
     public Integer getCustomerId() {
@@ -69,19 +69,19 @@ public class Customer {
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+        return created;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated(Date createdAt) {
+        this.created = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdated(Date updatedAt) {
+        this.updated = updatedAt;
     }
 
     public Integer getPhone() {
