@@ -91,4 +91,16 @@ public class Customer {
     public void setPhone(Integer phone) {
         this.phone = phone;
     }
+
+    public Customer(String first_name, String last_name, String username, String password,String email) {
+        this.firstName = first_name;
+        this.lastName = last_name;
+        this.username = username;
+        this.password = password;
+        this.email=email;
+
+
+    }
+
+    public Customer() {}
 }

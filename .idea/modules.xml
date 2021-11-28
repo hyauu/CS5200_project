@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CS5200_project.iml" filepath="$PROJECT_DIR$/.idea/CS5200_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2/Server/ProjServer.iml" filepath="$PROJECT_DIR$/P2/Server/ProjServer.iml" />
+    </modules>
+  </component>
+</project>

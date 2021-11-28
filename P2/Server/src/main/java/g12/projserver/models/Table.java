@@ -10,4 +10,20 @@ public class Table {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tableId;
     private Integer capacity;
+
+    public Integer getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
 }
