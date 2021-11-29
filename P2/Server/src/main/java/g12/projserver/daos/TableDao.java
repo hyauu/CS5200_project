@@ -15,7 +15,7 @@ public class TableDao {
 
   @GetMapping("/tables/find")
   public Iterable<Table> findAllTables() {
-    return tableRepository.findAllTables();
+    return tableRepository.findAll();
   }
 
   @GetMapping("/tables/find/id/{tableId}")

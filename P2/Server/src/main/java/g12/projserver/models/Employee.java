@@ -1,11 +1,12 @@
 package g12.projserver.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
-import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "employees")
+@javax.persistence.Table(name = "employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +14,6 @@ public class Employee {
     private Integer employeeId;
     private String role;
     private Double salary;
-    private Integer tableId;
     private String firstName;
     private String lastName;
     private String username;
@@ -22,6 +22,18 @@ public class Employee {
     private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
     private Date updated;
     private Integer phone;
+    @ManyToOne()
+    @JoinColumn(name = "table_id")
+    private g12.projserver.models.Table table;
+
+    @JsonBackReference
+    public g12.projserver.models.Table getTable() {
+        return table;
+    }
+
+    public void setTable(g12.projserver.models.Table table) {
+        this.table = table;
+    }
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -47,13 +59,13 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Integer getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(Integer tableId) {
-        this.tableId = tableId;
-    }
+//    public Integer getTableId() {
+//        return tableId;
+//    }
+//
+//    public void setTableId(Integer tableId) {
+//        this.tableId = tableId;
+//    }
 
     public String getFirstName() {
         return firstName;
