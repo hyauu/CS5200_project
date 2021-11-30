@@ -26,18 +26,16 @@ public class Order {
   private Integer customerId;
   private Integer tableId;
 
-//  @OneToMany(targetEntity = OrderToMenuItem.class, mappedBy = "OrderToMenuItemId", orphanRemoval = true)
-//  private List<OrderToMenuItem> orderToMenuItems;
-//
-//  public List<OrderToMenuItem> getOrderToMenuItems() {
-//    return orderToMenuItems;
-//  }
-//
-//  public void setOrderToMenuItems(List<OrderToMenuItem> orderToMenuItems) {
-//    this.orderToMenuItems = orderToMenuItems;
-//  }
+  @OneToMany(targetEntity = OrderToMenuItem.class, mappedBy = "orderId", orphanRemoval = true)
+  private List<OrderToMenuItem> items;
 
+  public List<OrderToMenuItem> getItems() {
+    return items;
+  }
 
+  public void setItems(List<OrderToMenuItem> items) {
+    this.items = items;
+  }
 
   public Integer getOrderId() {
     return orderId;

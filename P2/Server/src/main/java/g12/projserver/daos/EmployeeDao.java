@@ -26,9 +26,10 @@ public class EmployeeDao {
     return employeeRepository.findById(employeeId).get();
   }
   @PutMapping("/employees/create")
-  public Employee createEmployee( @RequestBody Employee employee) {
+  public Employee createEmployee(@RequestBody Employee employee) {
     return employeeRepository.save(employee);
   }
+
   @DeleteMapping("/employees/delete/id/{employeeId}")
   public void deleteEmployee(@PathVariable("employeeId") Integer employeeId) {
     employeeRepository.deleteById(employeeId);

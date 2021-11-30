@@ -26,7 +26,6 @@ public class Table {
         this.employees = employees;
     }
 
-
     @OneToMany(targetEntity = Order.class, mappedBy = "orderId", orphanRemoval = true)
     private List<Order> orders;
 
@@ -37,9 +36,6 @@ public class Table {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
-
-
-
 
     public Integer getTableId() {
         return tableId;

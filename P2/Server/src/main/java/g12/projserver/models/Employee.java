@@ -24,6 +24,7 @@ public class Employee {
     private Date updated;
     private Integer phone;
     private Integer tableId;
+    private Integer supervisorId;
 //    @ManyToOne
 //    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
 //    @JsonIgnore
@@ -50,6 +51,14 @@ public class Employee {
 //    public void setTable(g12.projserver.models.Table table) {
 //        this.table = table;
 //    }
+
+    public Integer getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(Integer supervisorId) {
+        this.supervisorId = supervisorId;
+    }
 
     public Integer getEmployeeId() {
         return employeeId;

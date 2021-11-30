@@ -1,9 +1,7 @@
 package g12.projserver.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import g12.projserver.models.Table;
 import g12.projserver.repositories.TableRepository;
@@ -23,15 +21,18 @@ public class TableDao {
     return tableRepository.findById(tableId).get();
   }
 
-  public Table createTable(Table table) {
+  @PutMapping("/table/create")
+  public Table createTable(@RequestBody Table table) {
     return tableRepository.save(table);
   }
 
-  public void deleteTable(Integer tableId) {
+  @DeleteMapping("/table/delete/id/{tableId}")
+  public void deleteTable(@PathVariable("tableId") Integer tableId) {
     tableRepository.deleteById(tableId);
   }
 
-  public Table updateTable(Integer tableId, Table updatedTable) {
+  @PostMapping("/table/update/id/{tableId}")
+  public Table updateTable(@PathVariable("tableId") Integer tableId, @RequestBody Table updatedTable) {
     updatedTable.setTableId(tableId);
     return tableRepository.save(updatedTable);
   }

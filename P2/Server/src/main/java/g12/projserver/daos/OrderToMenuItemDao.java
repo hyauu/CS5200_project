@@ -1,9 +1,7 @@
 package g12.projserver.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import g12.projserver.models.OrderToMenuItem;
 import g12.projserver.repositories.OrderToMenuItemRepository;
@@ -23,15 +21,18 @@ public class OrderToMenuItemDao {
     return orderToMenuItemRepository.findById(id).get();
   }
 
-  public OrderToMenuItem createOrderToMenuItem(OrderToMenuItem orderToMenuItem) {
+  @PutMapping("/ordertomenuitems/create")
+  public OrderToMenuItem createOrderToMenuItem(@RequestBody OrderToMenuItem orderToMenuItem) {
     return orderToMenuItemRepository.save(orderToMenuItem);
   }
 
-  public void deleteOrderToMenuItem(Integer id) {
+  @DeleteMapping("/ordertomenuitems/delete/id/{id}")
+  public void deleteOrderToMenuItem(@PathVariable("id") Integer id) {
     orderToMenuItemRepository.deleteById(id);
   }
 
-  public OrderToMenuItem updateOrderToMenuItem(Integer id, OrderToMenuItem updatedOrderToMenuItem) {
+  @PostMapping("/ordertomenuitems/update/id/{id}")
+  public OrderToMenuItem updateOrderToMenuItem(@PathVariable("id") Integer id, @RequestBody OrderToMenuItem updatedOrderToMenuItem) {
     updatedOrderToMenuItem.setOrderToMenuItemId(id);
     return orderToMenuItemRepository.save(updatedOrderToMenuItem);
   }

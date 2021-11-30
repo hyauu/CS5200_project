@@ -21,15 +21,18 @@ public class CustomerDao {
     return customerRepository.findById(customerId).get();
   }
 
-  public Customer createCustomer(Customer customer) {
+  @PutMapping("/customers/create")
+  public Customer createCustomer(@RequestBody Customer customer) {
     return customerRepository.save(customer);
   }
 
-  public void deleteCustomer(Integer customerId) {
+  @DeleteMapping("/customers/delete/id/{customerId}")
+  public void deleteCustomer(@PathVariable("customerId") Integer customerId) {
     customerRepository.deleteById(customerId);
   }
 
-  public Customer updateCustomer(Integer customerId, Customer updatedCustomer) {
+  @PostMapping("/customers/update/id/{customerId}")
+  public Customer updateCustomer(@PathVariable("customerId")Integer customerId, @RequestBody Customer updatedCustomer) {
     updatedCustomer.setCustomerId(customerId);
     return customerRepository.save(updatedCustomer);
   }

@@ -1,9 +1,8 @@
 package g12.projserver.daos;
 
+import g12.projserver.repositories.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import g12.projserver.models.Order;
 import g12.projserver.repositories.OrderRepository;
@@ -23,15 +22,18 @@ public class OrderDao {
     return orderRepository.findById(orderId).get();
   }
 
-  public Order createOrder(Order order) {
+  @PutMapping("/orders/create")
+  public Order createOrder(@RequestBody Order order) {
     return orderRepository.save(order);
   }
 
-  public void deleteOrder(Integer orderId) {
+  @DeleteMapping("/orders/delete/id/{orderId}")
+  public void deleteOrder(@PathVariable("orderId") Integer orderId) {
     orderRepository.deleteById(orderId);
   }
 
-  public Order updateOrder(Integer orderId, Order updatedOrder) {
+  @PostMapping("/orders/update/id/{orderId}")
+  public Order updateOrder(@PathVariable("orderId") Integer orderId, @RequestBody Order updatedOrder) {
     updatedOrder.setOrderId(orderId);
     return orderRepository.save(updatedOrder);
   }
