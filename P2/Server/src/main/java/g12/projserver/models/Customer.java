@@ -1,8 +1,11 @@
 package g12.projserver.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -19,6 +22,18 @@ public class Customer {
     private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
     private Date updated;
     private Integer phone;
+    @OneToMany(targetEntity = Order.class, mappedBy = "customerId", orphanRemoval = true)
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+
 
     public Integer getCustomerId() {
         return customerId;

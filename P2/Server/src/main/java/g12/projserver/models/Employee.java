@@ -23,12 +23,12 @@ public class Employee {
     private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
     private Date updated;
     private Integer phone;
-//    @ManyToOne()
-//    @JoinColumn(name = "table_id")
-    @ManyToOne
-    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
-    @JsonIgnore
-    private g12.projserver.models.Table table;
+    private Integer tableId;
+
+//    @ManyToOne
+//    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
+//    @JsonIgnore
+//    private g12.projserver.models.Table table;
 
 //    @Transient
 //    public Integer getTableCapacity() {
@@ -44,14 +44,14 @@ public class Employee {
 //        return table.getTableId();
 //    }
 
-    @JsonBackReference
-    public g12.projserver.models.Table getTable() {
-        return table;
-    }
-
-    public void setTable(g12.projserver.models.Table table) {
-        this.table = table;
-    }
+//    @JsonBackReference
+//    public g12.projserver.models.Table getTable() {
+//        return table;
+//    }
+//
+//    public void setTable(g12.projserver.models.Table table) {
+//        this.table = table;
+//    }
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -77,13 +77,13 @@ public class Employee {
         this.salary = salary;
     }
 
-//    public Integer getTableId() {
-//        return tableId;
-//    }
-//
-//    public void setTableId(Integer tableId) {
-//        this.tableId = tableId;
-//    }
+    public Integer getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
+    }
 
 
 

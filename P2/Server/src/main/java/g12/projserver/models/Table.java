@@ -15,7 +15,7 @@ public class Table {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tableId;
     private Integer capacity;
-    @OneToMany(targetEntity = Employee.class, mappedBy = "table", orphanRemoval = true)
+    @OneToMany(targetEntity = Employee.class, mappedBy = "tableId", orphanRemoval = true)
     private List<Employee> employees;
 
     @JsonManagedReference
@@ -26,6 +26,21 @@ public class Table {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
+
+    @OneToMany(targetEntity = Order.class, mappedBy = "orderId", orphanRemoval = true)
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+
+
 
     public Integer getTableId() {
         return tableId;
