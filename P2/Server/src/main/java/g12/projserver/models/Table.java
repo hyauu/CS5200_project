@@ -15,10 +15,9 @@ public class Table {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tableId;
     private Integer capacity;
-    @OneToMany(targetEntity = Employee.class, mappedBy = "table", orphanRemoval = true)
+    @OneToMany(targetEntity = Employee.class, mappedBy = "tableId", orphanRemoval = true)
     private List<Employee> employees;
 
-    @JsonManagedReference
     public List<Employee> getEmployees() {
         return employees;
     }

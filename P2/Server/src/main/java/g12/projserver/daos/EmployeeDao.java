@@ -1,18 +1,20 @@
 package g12.projserver.daos;
 
+import g12.projserver.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import g12.projserver.models.Employee;
 import g12.projserver.repositories.EmployeeRepository;
+import g12.projserver.models.Table;
 
 @RestController
 public class EmployeeDao {
   @Autowired
   EmployeeRepository employeeRepository;
+  @Autowired
+  TableRepository tableRepository;
 
   @GetMapping("/employees/find")
   public Iterable<Employee> findAllEmployees() {
@@ -23,16 +25,17 @@ public class EmployeeDao {
   public Employee findEmployeeById(@PathVariable("employeeId") Integer employeeId) {
     return employeeRepository.findById(employeeId).get();
   }
-
-  public Employee createEmployee(Employee employee) {
+  @PutMapping("/employees/create")
+  public Employee createEmployee( @RequestBody Employee employee) {
     return employeeRepository.save(employee);
   }
-
-  public void deleteEmployee(Integer employeeId) {
+  @DeleteMapping("/employees/delete/id/{employeeId}")
+  public void deleteEmployee(@PathVariable("employeeId") Integer employeeId) {
     employeeRepository.deleteById(employeeId);
   }
 
-  public Employee updateEmployee(Integer employeeId, Employee updatedEmployee) {
+  @PostMapping("/employees/update/id/{employeeId}")
+  public Employee updateEmployee(@PathVariable("employeeId") Integer employeeId, @RequestBody Employee updatedEmployee) {
     updatedEmployee.setEmployeeId(employeeId);
     return employeeRepository.save(updatedEmployee);
   }
