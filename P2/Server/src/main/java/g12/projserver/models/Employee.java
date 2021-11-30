@@ -1,6 +1,7 @@
 package g12.projserver.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,9 +23,26 @@ public class Employee {
     private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
     private Date updated;
     private Integer phone;
-    @ManyToOne()
-    @JoinColumn(name = "table_id")
+//    @ManyToOne()
+//    @JoinColumn(name = "table_id")
+    @ManyToOne
+    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
+    @JsonIgnore
     private g12.projserver.models.Table table;
+
+//    @Transient
+//    public Integer getTableCapacity() {
+//        if(table == null)
+//            return 0;
+//        return table.getCapacity();
+//    }
+//
+//    @Transient
+//    public Integer getTableId() {
+//        if(table == null)
+//            return 0;
+//        return table.getTableId();
+//    }
 
     @JsonBackReference
     public g12.projserver.models.Table getTable() {
@@ -66,6 +84,8 @@ public class Employee {
 //    public void setTableId(Integer tableId) {
 //        this.tableId = tableId;
 //    }
+
+
 
     public String getFirstName() {
         return firstName;
@@ -130,4 +150,6 @@ public class Employee {
     public void setPhone(Integer phone) {
         this.phone = phone;
     }
+
+
 }

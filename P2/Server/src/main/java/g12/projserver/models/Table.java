@@ -2,6 +2,7 @@ package g12.projserver.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import g12.projserver.models.Employee;
 import java.util.*;
