@@ -26,7 +26,16 @@ public class Employee {
     private Integer tableId;
 //    @ManyToOne
 //    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
+//    @JsonIgnore
 //    private g12.projserver.models.Table table;
+
+//    @Transient
+//    public Integer getTableCapacity() {
+//        if(table == null)
+//            return 0;
+//        return table.getCapacity();
+//    }
+
 //
 //    @Transient
 //    public Integer getTableId() {
