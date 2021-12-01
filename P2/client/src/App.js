@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Customer from "./components/customer/customer";
+import {BrowserRouter, Route} from 'react-router-dom'
+import CustomerList from "./components/customer/customer-list";
+import CustomerEditor from './components/customer/customer-editor';
 
 function App() {
   return (
@@ -19,7 +21,13 @@ function App() {
           Learn React
         </a>
       </header>      */}
-      <Customer />
+
+      <BrowserRouter>
+      <Route exact path="/customer/:id"
+        component={CustomerEditor} />
+      <Route exact path={["/customer/", "/"]}
+      component={CustomerList} />
+      </BrowserRouter>
     </div>
   );
 }
