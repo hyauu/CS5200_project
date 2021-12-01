@@ -8,22 +8,23 @@ const Customer = (props) => {
         findAllCustomers();
     }, []);
 
-    const findAllCustomers = () => {
-        CustomerService.findAllCustomers().then(vals => {
-            setCustomers(vals);
-            console.log("yoyo");
-        });
-        console.log(customers);
+    const findAllCustomers = async () => {
+        try {
+            const response = await CustomerService.findAllCustomers();
+            setCustomers(response);
+        } catch(e) {
+            console.log(e);
+        }
     }
 
     return (<div>
         <h2>Customers</h2>
         <button>Add Customer</button>
         {customers.map((c, idx) => {
-           <div key={idx}>{c.username}</div> 
+           return <div key={idx}>{c.username}</div> 
         })
         }
         </div>)
 }
 
-export default Customer
+export default Customer;
