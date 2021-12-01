@@ -1,11 +1,13 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Customer from "./components/customer/customer";
+import {BrowserRouter, Route} from 'react-router-dom'
+import CustomerList from "./components/customer/customer-list";
+import CustomerEditor from './components/customer/customer-editor';
 
 function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
+    return (
+        <div className="App">
+            {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -19,9 +21,15 @@ function App() {
           Learn React
         </a>
       </header>      */}
-      <Customer/>
-    </div>
-  );
+
+            <BrowserRouter>
+                <Route exact path="/customer/:id"
+                       component={CustomerEditor} />
+                <Route exact path={["/customer/", "/"]}
+                       component={CustomerList} />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
