@@ -15,6 +15,7 @@ CREATE TABLE `db_project`.`employees` (
  `salary` FLOAT DEFAULT 0,
  `table_id` INT NULL,
  `role` VARCHAR(45) NULL,
+ `supervisor_id` INT NULL,
  
 
  PRIMARY KEY (`id`),
@@ -28,6 +29,12 @@ CREATE TABLE `db_project`.`employees` (
 CONSTRAINT `employees_to_tables`
    FOREIGN KEY (`table_id`)
    REFERENCES `db_project`.`tables` (`id`)
+   ON DELETE NO ACTION
+   ON UPDATE NO ACTION,
+   
+CONSTRAINT `employees_to_employees`
+   FOREIGN KEY (`supervisor_id`)
+   REFERENCES `db_project`.`employees` (`id`)
    ON DELETE NO ACTION
    ON UPDATE NO ACTION
 );
