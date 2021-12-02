@@ -6,27 +6,17 @@ const CustomerEditor = (props) => {
     const {id} = useParams();
     const history = useHistory();
     const [customer, setCustomer] = useState({});
-    let hideSaveButton = false;
-
-
+    const [hideSave, setHideSave] = useState(false);
 
     useEffect(() => {
-        console.log(id);
-        if (id !== "new") {
-            findCustomerById(id);
-        }
-        else {
-            hideSaveButton = true;
-        }
-
-    }, []);
-
-    const saveButton =<button onClick={() => updateCustomer(customer.customerId, customer)}
+        if (id !== "new") findCustomerById(id);
+        else setHideSave(true)
+    }, [id]);
+    
+    const saveButton = <button onClick={() => updateCustomer(customer.customerId, customer)}
                     className="btn btn-primary me-3">Save</button>;
-    console.log(hideSaveButton)
-    const style = hideSaveButton ?  "" : saveButton;
-
-
+    let style = hideSave ?  "" : saveButton;
+    
 
 
     const findCustomerById = async (id) => {
@@ -41,7 +31,7 @@ const CustomerEditor = (props) => {
 
     const deleteCustomer = async (id) => {
         try {
-            const response = await CustomerService.deleteCustomer(id);
+            await CustomerService.deleteCustomer(id);
         } catch (e) {
             console.log(e);
         }
