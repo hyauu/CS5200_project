@@ -30,11 +30,7 @@ CONSTRAINT `employees_to_tables`
    FOREIGN KEY (`table_id`)
    REFERENCES `db_project`.`tables` (`id`)
    ON DELETE NO ACTION
-   ON UPDATE NO ACTION,
-   
-CONSTRAINT `employees_to_employees`
-   FOREIGN KEY (`supervisor_id`)
-   REFERENCES `db_project`.`employees` (`id`)
-   ON DELETE NO ACTION
    ON UPDATE NO ACTION
+   
+
 );

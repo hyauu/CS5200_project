@@ -6,6 +6,7 @@ const CustomerEditor = (props) => {
     const {id} = useParams();
     const history = useHistory();
     const [customer, setCustomer] = useState({});
+    let hideSaveButton = false;
 
 
 
@@ -14,7 +15,17 @@ const CustomerEditor = (props) => {
         if (id !== "new") {
             findCustomerById(id);
         }
+        else {
+            hideSaveButton = true;
+        }
+
     }, []);
+
+    const saveButton =<button onClick={() => updateCustomer(customer.customerId, customer)}
+                    className="btn btn-primary me-3">Save</button>;
+    console.log(hideSaveButton)
+    const style = hideSaveButton ?  "" : saveButton;
+
 
 
 
@@ -40,8 +51,8 @@ const CustomerEditor = (props) => {
 
     const updateCustomer = async (id, customer) => {
         try {
-            const resposne = await CustomerService.updateCustomer(id, customer);
-            setCustomer(resposne);
+            const response = await CustomerService.updateCustomer(id, customer);
+            setCustomer(response);
             history.goBack();
         } catch (e) {
             console.log(e);
@@ -64,11 +75,14 @@ const CustomerEditor = (props) => {
     };
 
 
+
     return (
         <div className="container">
             <h2>Customer Editor</h2>
             <h6 className="btn-warning">Note: When creating a new customer, each blank should not be empty.
                 Also, please do not enter a phone number larger than 2147483647, otherwise, it will generate overflow error.</h6>
+            <label>Id</label>
+            <input value={customer.customerId} className="form-control"/><br/>
             <label>First Name</label>
             <input className="form-control"
                    value={customer.firstName}
@@ -90,7 +104,7 @@ const CustomerEditor = (props) => {
                    onChange={(e) => setCustomer({...customer, password: e.target.value})}
             /><br/>
             <label>Email</label>
-            <input className="form-control"
+            <input type = "email" className="form-control"
                    value={customer.email}
                    onChange={(e) => setCustomer({...customer, email: e.target.value})}
             /><br/>
@@ -100,8 +114,8 @@ const CustomerEditor = (props) => {
                    onChange={(e) => setCustomer({...customer, phone: e.target.value})}
             /><br/>
             <label>Date of Birth</label>
-            <input type="Date" className="form-control"
-                   defaultValue={customer.dateOfBirth}
+            <input className="form-control"
+                   value={customer.dateOfBirth}
                    onChange={(e) => setCustomer({...customer, dateOfBirth: e.target.value})}
 
             /><br/>
@@ -116,9 +130,11 @@ const CustomerEditor = (props) => {
                     onClick={() => deleteCustomer(customer.customerId)}>
                 Delete
             </button>
-            <button onClick={() => updateCustomer(customer.customerId, customer)}
-                    className="btn btn-primary me-3">Save
-            </button>
+
+            {/*<button onClick={() => updateCustomer(customer.customerId, customer)}*/}
+            {/*        className="btn btn-primary me-3">Save*/}
+            {/*</button>*/}
+            {style}
             <button onClick={() => createCustomer(customer)} className="btn btn-success">Create
             </button>
 

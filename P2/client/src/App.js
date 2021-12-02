@@ -3,6 +3,10 @@
 import {BrowserRouter, Route} from 'react-router-dom'
 import CustomerList from "./components/customer/customer-list";
 import CustomerEditor from './components/customer/customer-editor';
+import TableList from "./components/table/table-list";
+import TableEditor from "./components/table/table-editor";
+import RecipeList from "./components/recipe/recipe-list";
+import RecipeEditor from "./components/recipe/recipe-editor";
 
 function App() {
     return (
@@ -27,6 +31,16 @@ function App() {
                        component={CustomerEditor} />
                 <Route exact path={["/customer/", "/"]}
                        component={CustomerList} />
+
+                <Route exact path="/table/:id"
+                       component={TableEditor} />
+                <Route exact path={["/table/", "/"]}
+                       component={TableList} />
+
+                <Route exact path="/recipe/:id"
+                       component={RecipeEditor} />
+                <Route exact path={["/recipe/", "/"]}
+                       component={RecipeList} />
             </BrowserRouter>
         </div>
     );

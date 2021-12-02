@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import g12.projserver.models.Table;
 import g12.projserver.repositories.TableRepository;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class TableDao {
   @Autowired
@@ -21,17 +22,17 @@ public class TableDao {
     return tableRepository.findById(tableId).get();
   }
 
-  @PutMapping("/table/create")
+  @PostMapping("/tables/create")
   public Table createTable(@RequestBody Table table) {
     return tableRepository.save(table);
   }
 
-  @DeleteMapping("/table/delete/id/{tableId}")
+  @DeleteMapping("/tables/delete/id/{tableId}")
   public void deleteTable(@PathVariable("tableId") Integer tableId) {
     tableRepository.deleteById(tableId);
   }
 
-  @PostMapping("/table/update/id/{tableId}")
+  @PutMapping("/tables/update/id/{tableId}")
   public Table updateTable(@PathVariable("tableId") Integer tableId, @RequestBody Table updatedTable) {
     updatedTable.setTableId(tableId);
     return tableRepository.save(updatedTable);

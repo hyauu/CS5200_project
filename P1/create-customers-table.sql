@@ -13,3 +13,4 @@ CREATE TABLE `db_project`.`customers` (
       
  `phone` INT NULL,
  PRIMARY KEY (`id`));
+ 

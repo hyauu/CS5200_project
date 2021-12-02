@@ -22,7 +22,7 @@ public class OrderDao {
     return orderRepository.findById(orderId).get();
   }
 
-  @PutMapping("/orders/create")
+  @PostMapping("/orders/create")
   public Order createOrder(@RequestBody Order order) {
     return orderRepository.save(order);
   }
@@ -32,7 +32,7 @@ public class OrderDao {
     orderRepository.deleteById(orderId);
   }
 
-  @PostMapping("/orders/update/id/{orderId}")
+  @PutMapping("/orders/update/id/{orderId}")
   public Order updateOrder(@PathVariable("orderId") Integer orderId, @RequestBody Order updatedOrder) {
     updatedOrder.setOrderId(orderId);
     return orderRepository.save(updatedOrder);

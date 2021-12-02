@@ -20,7 +20,7 @@ public class MenuItemDao {
   public MenuItem findMenuItemById(@PathVariable("menuItemId") Integer menuItemId) {
     return menuItemRepository.findById(menuItemId).get();
   }
-  @PutMapping("/menuitems/create")
+  @PostMapping("/menuitems/create")
   public MenuItem createMenuItem(@RequestBody MenuItem menuItem) {
     return menuItemRepository.save(menuItem);
   }
@@ -30,7 +30,7 @@ public class MenuItemDao {
     menuItemRepository.deleteById(menuItemId);
   }
 
-  @PostMapping("/menutiems/update/id/{menuItemId}")
+  @PutMapping("/menutiems/update/id/{menuItemId}")
   public MenuItem updateMenuItem(@PathVariable("menuItemId") Integer menuItemId, MenuItem updatedMenuItem) {
     updatedMenuItem.setMenuItemId(menuItemId);
     return menuItemRepository.save(updatedMenuItem);

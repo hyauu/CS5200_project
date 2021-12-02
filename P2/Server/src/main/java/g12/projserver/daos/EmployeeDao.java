@@ -25,7 +25,7 @@ public class EmployeeDao {
   public Employee findEmployeeById(@PathVariable("employeeId") Integer employeeId) {
     return employeeRepository.findById(employeeId).get();
   }
-  @PutMapping("/employees/create")
+  @PostMapping("/employees/create")
   public Employee createEmployee(@RequestBody Employee employee) {
     return employeeRepository.save(employee);
   }
@@ -35,7 +35,7 @@ public class EmployeeDao {
     employeeRepository.deleteById(employeeId);
   }
 
-  @PostMapping("/employees/update/id/{employeeId}")
+  @PutMapping("/employees/update/id/{employeeId}")
   public Employee updateEmployee(@PathVariable("employeeId") Integer employeeId, @RequestBody Employee updatedEmployee) {
     updatedEmployee.setEmployeeId(employeeId);
     return employeeRepository.save(updatedEmployee);

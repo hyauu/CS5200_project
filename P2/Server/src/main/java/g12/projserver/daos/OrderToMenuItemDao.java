@@ -21,7 +21,7 @@ public class OrderToMenuItemDao {
     return orderToMenuItemRepository.findById(id).get();
   }
 
-  @PutMapping("/ordertomenuitems/create")
+  @PostMapping("/ordertomenuitems/create")
   public OrderToMenuItem createOrderToMenuItem(@RequestBody OrderToMenuItem orderToMenuItem) {
     return orderToMenuItemRepository.save(orderToMenuItem);
   }
@@ -31,7 +31,7 @@ public class OrderToMenuItemDao {
     orderToMenuItemRepository.deleteById(id);
   }
 
-  @PostMapping("/ordertomenuitems/update/id/{id}")
+  @PutMapping("/ordertomenuitems/update/id/{id}")
   public OrderToMenuItem updateOrderToMenuItem(@PathVariable("id") Integer id, @RequestBody OrderToMenuItem updatedOrderToMenuItem) {
     updatedOrderToMenuItem.setOrderToMenuItemId(id);
     return orderToMenuItemRepository.save(updatedOrderToMenuItem);
