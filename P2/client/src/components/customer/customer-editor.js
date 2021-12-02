@@ -71,8 +71,8 @@ const CustomerEditor = (props) => {
             <h2>Customer Editor</h2>
             <h6 className="btn-warning">Note: When creating a new customer, each blank should not be empty.
                 Also, please do not enter a phone number larger than 2147483647, otherwise, it will generate overflow error.</h6>
-            <label>Id</label>
-            <input value={customer.customerId} className="form-control"/><br/>
+            {/*<label>Id</label>*/}
+            {/*<input value={customer.customerId} className="form-control"/><br/>*/}
             <label>First Name</label>
             <input className="form-control"
                    value={customer.firstName}

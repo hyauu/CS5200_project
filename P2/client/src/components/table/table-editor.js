@@ -6,6 +6,7 @@ const TableEditor = (props) => {
     const {id} = useParams();
     const history = useHistory();
     const [table, setTable] = useState({});
+    const [hideSave, setHideSave] = useState(false);
 
 
 
@@ -14,7 +15,13 @@ const TableEditor = (props) => {
         if (id !== "new") {
             findTableById(id);
         }
-    }, []);
+        else setHideSave(true)
+    }, [id]);
+
+    const saveButton = <button onClick={() => updateTable(table.tableId, table)}
+                               className="btn btn-primary me-3">Save
+    </button>
+    let style = hideSave ?  "" : saveButton;
 
 
 
@@ -85,9 +92,10 @@ const TableEditor = (props) => {
                     onClick={() => deleteTable(table.tableId)}>
                 Delete
             </button>
-            <button onClick={() => updateTable(table.tableId, table)}
-                    className="btn btn-primary me-3">Save
-            </button>
+            {/*<button onClick={() => updateTable(table.tableId, table)}*/}
+            {/*        className="btn btn-primary me-3">Save*/}
+            {/*</button>*/}
+            {style}
             <button onClick={() => createTable(table)} className="btn btn-success">Create
             </button>
 

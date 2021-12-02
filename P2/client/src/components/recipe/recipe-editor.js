@@ -6,7 +6,7 @@ const RecipeEditor = (props) => {
     const {id} = useParams();
     const history = useHistory();
     const [recipe, setRecipe] = useState({});
-
+    const [hideSave, setHideSave] = useState(false);
 
 
     useEffect(() => {
@@ -14,7 +14,12 @@ const RecipeEditor = (props) => {
         if (id !== "new") {
             findRecipeById(id);
         }
+        else setHideSave(true)
     }, []);
+
+    const saveButton = <button onClick={() => updateRecipe(recipe.recipeId, recipe)}
+                               className="btn btn-primary me-3">Save</button>
+    let style = hideSave ?  "" : saveButton;
 
 
 
@@ -85,9 +90,10 @@ const RecipeEditor = (props) => {
                     onClick={() => deleteRecipe(recipe.recipeId)}>
                 Delete
             </button>
-            <button onClick={() => updateRecipe(recipe.recipeId, recipe)}
-                    className="btn btn-primary me-3">Save
-            </button>
+            {/*<button onClick={() => updateRecipe(recipe.recipeId, recipe)}*/}
+            {/*        className="btn btn-primary me-3">Save*/}
+            {/*</button>*/}
+            {style}
             <button onClick={() => createRecipe(recipe)} className="btn btn-success">Create
             </button>
 
