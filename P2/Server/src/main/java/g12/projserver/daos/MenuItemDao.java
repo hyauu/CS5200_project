@@ -32,7 +32,7 @@ public class MenuItemDao {
   }
 
   @PutMapping("/menuitems/update/id/{menuItemId}")
-  public MenuItem updateMenuItem(@PathVariable("menuItemId") Integer menuItemId, MenuItem updatedMenuItem) {
+  public MenuItem updateMenuItem(@PathVariable("menuItemId") Integer menuItemId, @RequestBody MenuItem updatedMenuItem) {
     updatedMenuItem.setMenuItemId(menuItemId);
     return menuItemRepository.save(updatedMenuItem);
   }
