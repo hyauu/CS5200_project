@@ -7,6 +7,8 @@ import TableList from "./components/table/table-list";
 import TableEditor from "./components/table/table-editor";
 import RecipeList from "./components/recipe/recipe-list";
 import RecipeEditor from "./components/recipe/recipe-editor";
+import MenuItemList from './components/menu-item/menu-item-list';
+import MenuItemEditor from './components/menu-item/menu-item-editor';
 
 function App() {
     return (
@@ -41,6 +43,11 @@ function App() {
                        component={RecipeEditor} />
                 <Route exact path={["/recipe/", "/"]}
                        component={RecipeList} />
+
+              <Route exact path="/menuitems/:id"
+                       component={MenuItemEditor} />
+                <Route exact path={["/menuitems/", "/"]}
+                       component={MenuItemList} />                       
             </BrowserRouter>
         </div>
     );
