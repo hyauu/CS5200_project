@@ -7,6 +7,7 @@ import g12.projserver.models.MenuItem;
 import g12.projserver.repositories.MenuItemRepository;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class MenuItemDao {
   @Autowired
   MenuItemRepository menuItemRepository;
@@ -25,12 +26,12 @@ public class MenuItemDao {
     return menuItemRepository.save(menuItem);
   }
 
-  @DeleteMapping("/menutiems/delete/id/{menuItemId}")
+  @DeleteMapping("/menuitems/delete/id/{menuItemId}")
   public void deleteMenuItem(@PathVariable("menuItemId") Integer menuItemId) {
     menuItemRepository.deleteById(menuItemId);
   }
 
-  @PutMapping("/menutiems/update/id/{menuItemId}")
+  @PutMapping("/menuitems/update/id/{menuItemId}")
   public MenuItem updateMenuItem(@PathVariable("menuItemId") Integer menuItemId, MenuItem updatedMenuItem) {
     updatedMenuItem.setMenuItemId(menuItemId);
     return menuItemRepository.save(updatedMenuItem);
