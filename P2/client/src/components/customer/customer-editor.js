@@ -7,6 +7,8 @@ const CustomerEditor = (props) => {
     const history = useHistory();
     const [customer, setCustomer] = useState({});
 
+
+
     useEffect(() => {
         console.log(id);
         if (id !== "new") {
@@ -96,6 +98,12 @@ const CustomerEditor = (props) => {
             <input className="form-control"
                    value={customer.phone}
                    onChange={(e) => setCustomer({...customer, phone: e.target.value})}
+            /><br/>
+            <label>Date of Birth</label>
+            <input type="Date" className="form-control"
+                   defaultValue={customer.dateOfBirth}
+                   onChange={(e) => setCustomer({...customer, dateOfBirth: e.target.value})}
+
             /><br/>
 
             <button className="btn btn-warning me-3"

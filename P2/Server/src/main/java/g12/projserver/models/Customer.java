@@ -22,6 +22,8 @@ public class Customer {
     private Date created; // https://stackoverflow.com/questions/2400955/how-to-store-java-date-to-mysql-datetime-with-jpa
     private Date updated;
     private Integer phone;
+    private Date dateOfBirth;
+
     @OneToMany(targetEntity = Order.class, mappedBy = "customerId", orphanRemoval = true)
     private List<Order> orders;
 
@@ -118,4 +120,12 @@ public class Customer {
     }
 
     public Customer() {}
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 }
