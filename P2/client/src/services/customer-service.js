@@ -18,7 +18,7 @@ const CustomerService = {
 
     updateCustomer : (id, updatedCustomer) => {
         return fetch(`${CUSTOMER_URL}/update/id/${id}`, {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(updatedCustomer),
             headers: {
                 "content-type": "application/json"
@@ -29,8 +29,16 @@ const CustomerService = {
     deleteCustomer : (id) => {
         return fetch(`${CUSTOMER_URL}/delete/id/${id}`, {
             method: "DELETE"
-        }).then(res => res.json());
-    }
+        }).then(res => res.status);
+    },
+
+   createCustomer : (customer) =>
+        fetch(`${CUSTOMER_URL}/create`, {
+            method: 'POST',
+            body: JSON.stringify(customer),
+            headers: {'content-type': 'application/json'}
+        })
+            .then(response => response.json())
 }
 
 export default CustomerService;

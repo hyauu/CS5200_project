@@ -22,7 +22,7 @@ public class CustomerDao {
     return customerRepository.findById(customerId).get();
   }
 
-  @PutMapping("/customers/create")
+  @PostMapping("/customers/create")
   public Customer createCustomer(@RequestBody Customer customer) {
     return customerRepository.save(customer);
   }
@@ -32,7 +32,7 @@ public class CustomerDao {
     customerRepository.deleteById(customerId);
   }
 
-  @PostMapping("/customers/update/id/{customerId}")
+  @PutMapping("/customers/update/id/{customerId}")
   public Customer updateCustomer(@PathVariable("customerId")Integer customerId, @RequestBody Customer updatedCustomer) {
     updatedCustomer.setCustomerId(customerId);
     return customerRepository.save(updatedCustomer);
