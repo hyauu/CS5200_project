@@ -6,15 +6,17 @@ import RecipeService from "../../services/recipe-service";
 const MenuItemEditor = (props) => {
     const {id} = useParams();
     const history = useHistory();
-    const [menuItem, setMenuItem] = useState({serveTime: "BREAKFAST"});
+    const [menuItem, setMenuItem] = useState({});
     const [recipes, setRecipes] = useState([]);
     const [hideSave, setHideSave] = useState(false);
 
     useEffect(() => {
-        if (id !== "new") findMenuItemById(id);
-        else setHideSave(true);
-
         findAllRecipes();
+        if (id !== "new") findMenuItemById(id);
+        else {
+            // setMenuItem({...menuItem, recipeId: recipes[0]?.recipeId, serveTime: "BREAKFAST"});
+            setHideSave(true);
+        }
     }, [id]);
 
     const saveButton = <button onClick={() => updateMenuItem(menuItem.menuItemId, menuItem)}
@@ -88,10 +90,11 @@ const MenuItemEditor = (props) => {
             /><br/>
             <label>Recipe Id</label>
             <select value={menuItem.recipeId} onChange={(e) => setMenuItem({...menuItem, recipeId: e.target.value})}>
+                <option></option>;
                 {
                     recipes.map((r, idx) => {
-                        if (idx === 0) return <option value={r.recipeId} defaultValue>{r.recipeId}</option>;
-                        return <option value={r.recipeId}>{r.recipeId}</option>;
+                        if (idx === 0) return <option key={idx} value={r.recipeId}>{r.recipeId}</option>;
+                        return <option key={idx} value={r.recipeId}>{r.recipeId}</option>;
                     })
                 }
                 
@@ -99,7 +102,8 @@ const MenuItemEditor = (props) => {
             <br/>
             <label>serveTime</label>
             <select value={menuItem.serveTime} onChange={(e) => setMenuItem({...menuItem, serveTime: e.target.value})}>
-                <option value="BREAKFAST" defaultValue> breakfast</option>
+                <option></option>;
+                <option value="BREAKFAST"> breakfast</option>
                 <option value="DINNER">dinner</option>
                 <option value="LUNCH">lunch</option>
             </select>  
