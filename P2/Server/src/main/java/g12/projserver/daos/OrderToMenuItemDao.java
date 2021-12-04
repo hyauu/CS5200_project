@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import g12.projserver.models.OrderToMenuItem;
 import g12.projserver.repositories.OrderToMenuItemRepository;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class OrderToMenuItemDao {
   @Autowired
