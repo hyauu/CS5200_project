@@ -9,6 +9,8 @@ import RecipeList from "./components/recipe/recipe-list";
 import RecipeEditor from "./components/recipe/recipe-editor";
 import MenuItemList from './components/menu-item/menu-item-list';
 import MenuItemEditor from './components/menu-item/menu-item-editor';
+import OrderList from './components/order/order-list';
+import OrderEditor from './components/order/order-editor';
 
 function App() {
     return (
@@ -46,8 +48,12 @@ function App() {
 
               <Route exact path="/menuitems/:id"
                        component={MenuItemEditor} />
-                <Route exact path={["/menuitems/", "/"]}
-                       component={MenuItemList} />                       
+              <Route exact path={["/menuitems/", "/"]}
+                       component={MenuItemList} />  
+              <Route exact path={["/orders/", "/"]}
+                       component={OrderList} />  
+              <Route exact path={["/orders/:id"]}
+                       component={OrderEditor} />                                                                    
             </BrowserRouter>
         </div>
     );

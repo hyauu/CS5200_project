@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import g12.projserver.models.Order;
 import g12.projserver.repositories.OrderRepository;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class OrderDao {
   @Autowired

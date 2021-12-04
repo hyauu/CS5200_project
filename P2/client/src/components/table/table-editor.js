@@ -37,7 +37,7 @@ const TableEditor = (props) => {
 
     const deleteTable = async (id) => {
         try {
-            const response = await TableService.deleteTable(id);
+            await TableService.deleteTable(id);
         } catch (e) {
             console.log(e);
         }
