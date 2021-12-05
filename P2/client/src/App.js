@@ -11,6 +11,8 @@ import MenuItemList from './components/menu-item/menu-item-list';
 import MenuItemEditor from './components/menu-item/menu-item-editor';
 import OrderList from './components/order/order-list';
 import OrderEditor from './components/order/order-editor';
+import EmployeeEditor from "./components/employee/employee-editor";
+import EmployeeList from "./components/employee/employee-list";
 
 function App() {
     return (
@@ -35,6 +37,11 @@ function App() {
                        component={CustomerEditor} />
                 <Route exact path={["/customer/", "/"]}
                        component={CustomerList} />
+
+                <Route exact path="/employee/:id"
+                       component={EmployeeEditor} />
+                <Route exact path={["/employee/", "/"]}
+                       component={EmployeeList} />
 
                 <Route exact path="/table/:id"
                        component={TableEditor} />

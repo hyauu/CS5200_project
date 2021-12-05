@@ -25,6 +25,9 @@ public class Employee {
     private Integer phone;
     private Integer tableId;
     private Integer supervisorId;
+    private Date dateOfBirth;
+
+
 //    @ManyToOne
 //    @PrimaryKeyJoinColumn(name = "table_id", referencedColumnName = "table_id")
 //    @JsonIgnore
@@ -154,6 +157,14 @@ public class Employee {
 
     public void setPhone(Integer phone) {
         this.phone = phone;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
 

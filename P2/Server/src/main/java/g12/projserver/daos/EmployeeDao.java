@@ -9,6 +9,7 @@ import g12.projserver.models.Employee;
 import g12.projserver.repositories.EmployeeRepository;
 import g12.projserver.models.Table;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class EmployeeDao {
   @Autowired
