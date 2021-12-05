@@ -18,6 +18,7 @@ const OrderToItemList = (props) => {
         try {
             let response = await OrderToItemService.findAllOrderToItems();
             setItems(response.filter(v => v.orderId == orderId));
+            // console.log(orderToItems)
         } catch (e) {
             console.log(e);
         }
@@ -63,8 +64,9 @@ const OrderToItemList = (props) => {
         <ul className="list-group mt-3">
             {
                 orderToItems.map((item, idx) => {
+                    // console.log(item)
                     return <li className="list-group-item" key={idx}>
-                        <OrderToItem id={orderId} menuItems={menuItems}></OrderToItem>
+                        <OrderToItem orderToMenuItemId={item.orderToMenuItemId} menuItems={menuItems} findOrderToItems={findOrderToItems} orderId={orderId}></OrderToItem>
                         </li>
                 })
             }
