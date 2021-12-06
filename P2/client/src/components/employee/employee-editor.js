@@ -132,7 +132,7 @@ const EmployeeEditor = (props) => {
                    value={employee.tableId}
                    onChange={(e) => setEmployee({...employee, tableId: e.target.value})}
             /><br/>
-            <label>Customer Id</label>
+            <label>Supervisor Id</label>
             <input className="form-control"
                    value={employee.supervisorId}
                    onChange={(e) => setEmployee({...employee, supervisorId: e.target.value})}
