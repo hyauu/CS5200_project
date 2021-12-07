@@ -1,9 +1,9 @@
 # CS5200_project
 
-##Name of the project:
+## Name of the project:
 Restaurant Database Management System
 
-##Name of the team(s):
+## Name of the team(s):
 Final Project 12 (Haoting Qiu, Yanjin Deng)
 
 ### To run on localhost follow these steps:
