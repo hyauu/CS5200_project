@@ -3,10 +3,10 @@
 ## Name of the project:
 Restaurant Database Management System
 
-## Name of the team(s):
+## Name of the team:
 Final Project 12 (Haoting Qiu, Yanjin Deng)
 
-### To run on localhost follow these steps:
+## To run on localhost follow these steps:
 0. Please type command: “cd P2/client” to go to P2/client directory, and type command: “npm install” for any required modules.
 1. Please type command: “cd P2/client” to go to P2/client directory and type command: “npm run start” in the terminal.
 2. Run ProjServerApplication.
