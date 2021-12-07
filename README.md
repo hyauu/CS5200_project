@@ -20,7 +20,7 @@ We design 2 types of users for this application: customer and employee. Each emp
 For domain objects, we develop order, table, menu item and recipe. For each domain object, they can create/update/delete/retrieve a corresponding record as well. For instance, as for order editor, we can not only retrieve a list of menu items for this order, but also add new menu items into this order, which makes it much easier for a customer to update or retrieve his or her order.
 
 ## User Description
-## 0. User Interface
+### 0. User Interface
 An user has many attributes, including first name, last name, username, password, email, date of birth and phone. Customer and Employee class inherit from User interface.
 ### 1. Customer
 A customer has many attributes, including first name, last name, username, password, email, date of birth and phone, he or she can create or retrieve or delete or update his or her own profile. A customer is able to create or retrieve or delete or update his order, i.e. adding menu items into his orders, changing his table, retrieving the menu items of his orders.
