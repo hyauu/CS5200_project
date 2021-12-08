@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {useParams, useHistory} from "react-router-dom";
 import MenuItemService from "../../services/menu-item-service";
+import OrderService from "../../services/order-service";
 import RecipeService from "../../services/recipe-service";
+import OrderToItemService from "../../services/order-to-item-service";
+import { Link } from "react-router-dom";
 
 const MenuItemEditor = (props) => {
     const {id} = useParams();
@@ -9,11 +12,14 @@ const MenuItemEditor = (props) => {
     const [menuItem, setMenuItem] = useState({});
     const [recipes, setRecipes] = useState([]);
     const [hideSave, setHideSave] = useState(false);
+    const [orderIds, setOrderIds] = useState([]);
 
     useEffect(() => {
         findAllRecipes();
-        if (id !== "new") findMenuItemById(id);
-        else {
+        if (id !== "new") {
+            findMenuItemById(id);
+            findAllOrders(id);
+        } else {
             // setMenuItem({...menuItem, recipeId: recipes[0]?.recipeId, serveTime: "BREAKFAST"});
             setHideSave(true);
         }
@@ -27,6 +33,16 @@ const MenuItemEditor = (props) => {
         try {
             const response = await MenuItemService.findMenuItemById(id);
             setMenuItem(response);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const findAllOrders = async (menuItemId) => {
+        try {
+            let resposne = await OrderToItemService.findAllOrderToItems();
+            resposne = resposne.filter(v => v.menuItemId == menuItemId);
+            setOrderIds(resposne.map(v => v.orderId));
         } catch (e) {
             console.log(e);
         }
@@ -122,7 +138,17 @@ const MenuItemEditor = (props) => {
             <button onClick={() => createMenuItem(menuItem)} className="btn btn-success">
                 Create
             </button>
-
+            <br/>
+            <h3>Order Ids</h3>
+            <ul className="list-group mt-3">
+                {
+                    orderIds.map((o, idx) => {
+                        return <li className="list-group-item" key={idx}>
+                            <Link to={`/orders/${o}`}>{o}</Link>
+                        </li>
+                    })
+                }
+            </ul>
         </div>)
 }
 
